@@ -23,7 +23,7 @@ public class Exemplo {
         DataBinding oneWayBinding = new DataBinding(modelOneWay, viewOneWay);
         oneWayBinding.configureOneWayBinding(true);
         modelOneWay.setNome("Novo valor");
-        System.out.println("Valor da visão: " + viewOneWay.getNomeLabel());
+        System.out.println("Valor da view: " + viewOneWay.getNomeLabel());
 
         // Exemplo de two-way data binding
         System.out.println("\nExemplo de two-way data binding:");
@@ -32,9 +32,9 @@ public class Exemplo {
         DataBinding twoWayBinding = new DataBinding(modelTwoWay, viewTwoWay);
         twoWayBinding.configureTwoWayBinding();
         modelTwoWay.setNome("Novo valor");
-        System.out.println("Valor da visão: " + viewTwoWay.getNomeLabel());
+        System.out.println("Valor da view: " + viewTwoWay.getNomeLabel());
         viewTwoWay.setNomeLabel("Valor atualizado");
-        System.out.println("Valor do modelo: " + modelTwoWay.getNome());
+        System.out.println("Valor da model: " + modelTwoWay.getNome());
 
     }
 }
