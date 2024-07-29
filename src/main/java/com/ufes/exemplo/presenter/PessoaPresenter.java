@@ -5,7 +5,7 @@
 package com.ufes.exemplo.presenter;
 
 import com.mycompany.desafioswitchbindingdata.databinding.DataBinding;
-import com.ufes.exemplo.model.IObserver;
+import com.mycompany.desafioswitchbindingdata.observer.Observer;
 import com.ufes.exemplo.model.Pessoa;
 import com.ufes.exemplo.view.PessoaView;
 
@@ -13,40 +13,38 @@ import com.ufes.exemplo.view.PessoaView;
  *
  * @author talle
  */
-public class PessoaPresenter implements IObserver {
+public class PessoaPresenter implements Observer {
     private Pessoa pessoa;
     private PessoaView view;
-    private DataBinding dataBinding;
 
     public PessoaPresenter(Pessoa pessoa, PessoaView view) {
         this.pessoa = pessoa;
         this.view = view;
-        this.dataBinding = new DataBinding(pessoa, view);
-        dataBinding.configureTwoWayBinding();
-        pessoa.addObserver(this);
+        this.pessoa.addObserver(this);
+        updateView();
+
         view.getButton().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateModel(view.getField().getText());
-                view.setNomeLabel(view.getField().getText());
+                pessoa.setNome(view.getField().getText());
             }
         });
     }
 
-    public String getNome() {
-        return pessoa.getNome();
-    }
-
-    public void updateModel(String novoNome) {
-        dataBinding.updateModel(pessoa);
-    }
-
-    public void updateView(String novoNome) {
-        dataBinding.updateView(view);
-    }
-
     @Override
-    public void update(Pessoa pessoa) {
-        updateModel(getNome());
-        updateView(getNome());
+    public void update(Object objeto) {
+        if (objeto instanceof Pessoa) {
+            Pessoa pessoaAtualizada = (Pessoa) objeto;
+            view.setNomeLabel(pessoaAtualizada.getNome());
+            view.getField().setText(pessoaAtualizada.getNome());
+        }
+    }
+
+    public void updateView() {
+        view.setNomeLabel(pessoa.getNome());
+        view.getField().setText(pessoa.getNome());
+    }
+
+    public void updateModel() {
+        pessoa.setNome(view.getField().getText());
     }
 }

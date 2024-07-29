@@ -1,5 +1,5 @@
+com\ufes\exemplo\main\Exemplo.class
 com\ufes\exemplo\model\Pessoa.class
 com\ufes\exemplo\view\PessoaView.class
-com\ufes\exemplo\Exemplo.class
-com\ufes\exemplo\view\PessoaView$1.class
 com\ufes\exemplo\presenter\PessoaPresenter.class
+com\ufes\exemplo\presenter\PessoaPresenter$1.class

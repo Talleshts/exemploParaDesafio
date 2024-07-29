@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.ufes.exemplo.Exemplo</exec.mainClass>
+        <exec.mainClass>com.ufes.exemplo.main.Exemplo</exec.mainClass>
     </properties>
     <repositories>
             <repository>
@@ -21,7 +21,7 @@
 	<dependency>
 	    <groupId>com.github.Talleshts</groupId>
 	    <artifactId>desafioDataBinding</artifactId>
-	    <version>main-90552ea523-1</version>
+	    <version>62561ed12f</version>
 	    <type>jar</type>
 	</dependency>
     </dependencies>

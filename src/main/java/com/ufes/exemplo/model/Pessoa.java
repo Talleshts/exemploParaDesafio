@@ -4,6 +4,7 @@
  */
 package com.ufes.exemplo.model;
 
+import com.mycompany.desafioswitchbindingdata.observer.Observavel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,8 @@ import java.util.List;
  *
  * @author talle
  */
-public class Pessoa {
+public class Pessoa extends Observavel {
     private String nome;
-    private final List<IObserver> observers = new ArrayList<>();
     
     public Pessoa(String nome) {
         this.nome = nome;
@@ -25,20 +25,6 @@ public class Pessoa {
 
     public void setNome(String nome) {
         this.nome = nome;
-        notifyObservers();
-    }
-
-    public void addObserver(IObserver observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(IObserver observer) {
-        observers.remove(observer);
-    }
-
-    private void notifyObservers() {
-        for (IObserver observer : observers) {
-            observer.update(this);
-        }
+        notificaObservers(this);
     }
 }
