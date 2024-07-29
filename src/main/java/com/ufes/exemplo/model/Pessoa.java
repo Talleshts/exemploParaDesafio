@@ -14,9 +14,12 @@ import java.util.List;
  */
 public class Pessoa extends Observavel {
     private String nome;
+    private List<String> historico;
     
     public Pessoa(String nome) {
         this.nome = nome;
+        this.historico = new ArrayList<>();
+        addHistorico("Inicial: " + nome);
     }
 
     public String getNome() {
@@ -26,5 +29,14 @@ public class Pessoa extends Observavel {
     public void setNome(String nome) {
         this.nome = nome;
         notificaObservers(this);
+        addHistorico("Mudança: " + nome);
+    }
+    
+    private void addHistorico(String evento) {
+        historico.add(evento);
+    }
+
+    public List<String> getHistorico() {
+        return historico;
     }
 }

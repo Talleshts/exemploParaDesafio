@@ -25,7 +25,7 @@ public class PessoaPresenter implements Observer {
 
         view.getButton().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pessoa.setNome(view.getField().getText());
+                updateModel();
             }
         });
     }
@@ -34,17 +34,25 @@ public class PessoaPresenter implements Observer {
     public void update(Object objeto) {
         if (objeto instanceof Pessoa) {
             Pessoa pessoaAtualizada = (Pessoa) objeto;
-            view.setNomeLabel(pessoaAtualizada.getNome());
-            view.getField().setText(pessoaAtualizada.getNome());
+            updateView();
         }
     }
 
     public void updateView() {
         view.setNomeLabel(pessoa.getNome());
         view.getField().setText(pessoa.getNome());
+        System.out.println("Valores(Model - View): " + pessoa.getNome() + " - " + view.getField().getText());
+        printHistorico();
     }
 
     public void updateModel() {
         pessoa.setNome(view.getField().getText());
+    }
+    
+    private void printHistorico() {
+        System.out.println("Histórico de mudanças:");
+        for (String evento : pessoa.getHistorico()) {
+            System.out.println(evento);
+        }
     }
 }
