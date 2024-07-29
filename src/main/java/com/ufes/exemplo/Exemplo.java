@@ -18,23 +18,35 @@ public class Exemplo {
     public static void main(String[] args) {
         // Exemplo de one-way data binding
         System.out.println("Exemplo de one-way data binding:");
-        Pessoa modelOneWay = new Pessoa("Valor inicial");
-        PessoaView viewOneWay = new PessoaView();
+        Pessoa modelOneWay = new Pessoa("Talles");
+        PessoaPresenter viewOneWay = new PessoaPresenter(modelOneWay, new PessoaView("Talles"));
         DataBinding oneWayBinding = new DataBinding(modelOneWay, viewOneWay);
         oneWayBinding.configureOneWayBinding(true);
-        modelOneWay.setNome("Novo valor");
-        System.out.println("Valor da view: " + viewOneWay.getNomeLabel());
+        System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
+
+        viewOneWay.updateModel("Eduardo");
+        System.out.println("Setting value: Eduardo");
+        System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
+
+        viewOneWay.updateView("teste");
+        System.out.println("Setting value: teste");
+        System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
 
         // Exemplo de two-way data binding
-        System.out.println("\nExemplo de two-way data binding:");
-        Pessoa modelTwoWay = new Pessoa("Valor inicial");
-        PessoaView viewTwoWay = new PessoaView();
-        DataBinding twoWayBinding = new DataBinding(modelTwoWay, viewTwoWay);
-        twoWayBinding.configureTwoWayBinding();
-        modelTwoWay.setNome("Novo valor");
-        System.out.println("Valor da view: " + viewTwoWay.getNomeLabel());
-        viewTwoWay.setNomeLabel("Valor atualizado");
-        System.out.println("Valor da model: " + modelTwoWay.getNome());
+        // System.out.println("\nExemplo de two-way data binding:");
+        // Pessoa modelTwoWay = new Pessoa("Talles");
+        // PessoaPresenter viewTwoWay = new PessoaPresenter(modelTwoWay, new PessoaView("Talles"));
+        // DataBinding twoWayBinding = new DataBinding(modelTwoWay, viewTwoWay);
+        // twoWayBinding.configureTwoWayBinding();
 
+        //  System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
+
+        // modelTwoWay.setNome("Eduardo");
+        
+        //  System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
+
+        // viewTwoWay.updateView("teste");
+
+        //  System.out.println("Valores(Model - View): " + modelOneWay.getNome() + " - " + viewOneWay.getNome());
     }
 }

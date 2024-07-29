@@ -5,39 +5,44 @@
 package com.ufes.exemplo.view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.JButton;
+import javax.swing.JTextField;
 /**
  *
  * @author talle
  */
 public class PessoaView extends javax.swing.JFrame {
 
-    /**
+     /**
      * Creates new form PessoaView
      */
-    public PessoaView() {
-        initComponents();
-    }
-    
     public PessoaView(String nome) {
-        this.nomeLabel = new JLabel(nome);
-        this.add(nomeLabel, BorderLayout.CENTER);
+        initComponents();
+        setNomeLabel(nome);
+        this.add(header, BorderLayout.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 200);
         this.setVisible(true);        
     }
 
     public void setNomeLabel(String nome) {
-      nomeLabel.setText(nome);
+        nomeLabel.setText(nome);
     }
 
-    public String getNomeLabel() {
-        return nomeLabel.getText();
+    public JButton getButton() {
+        return this.saveButton;
     }
-    
-    
+
+    public JTextField getField() {
+        return this.jTextField1;
+    }
+
+    public JLabel getNomeLabel() {
+        return this.nomeLabel;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,27 +53,45 @@ public class PessoaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        saveButton = new javax.swing.JButton();
+        header = new javax.swing.JLabel();
         nomeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nomeLabel.setText("jLabel1");
-
+        header.setText("Meu Nome:");
+        saveButton.setText("Mudar Nome");
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(nomeLabel)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(header)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nomeLabel)
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(nomeLabel)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(header)
+                    .addComponent(nomeLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,16 +123,12 @@ public class PessoaView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PessoaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PessoaView().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel header;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nomeLabel;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
